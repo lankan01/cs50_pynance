@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register new user
+{% endblock %}
+
+{% block main %}
+  <h2>Your Portfolio</h2>
+
+  <div>
+    <h4>Cash Remaining: ${{user_balance}}</h4>
+  </div>
+
+  {% if all_stocks %}
+    <table class="section">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares Owned</th>
+                <th>Current Price</th>
+                <th>Difference</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for stock in all_stocks %}
+          <tr>
+              <th>{{ stock.symbol }}</th>
+              <th>{{ stock.owned_shares }}</th>
+              <th>{{ stock.price | usd }}</th>
+              <th>
+                  {% if stock.percen_change > 0 %}
+                      <span class="positive">{{ stock.percen_change }}%</span>
+                  {% else %}
+                      <span class="negative">{{ stock.percen_change }}%</span>
+                  {% endif %}
+              </th>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+  {% else %}
+      <h5> No stock in current portfolio </h5>
+  {% endif %}
+{% endblock %}

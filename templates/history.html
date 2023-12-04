@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register new user
+{% endblock %}
+
+{% block main %}
+  <h2>Your Portfolio</h2>
+
+  <div>
+    <h4>Cash Remaining: ${{user_balance}}</h4>
+  </div>
+
+    <table class="section">
+      <thead>
+          <tr>
+              <th>Symbol</th>
+              <th>Shares Transacted</th>
+              <th>At This Price</th>
+              <th>Action (B/S)</th>
+          </tr>
+      </thead>
+      <tbody>
+        {% for transaction in transactions %}
+          <tr>
+            <th>{{transaction.symbol}}</th>
+            <th>{{transaction.shares}}</th>
+            <th>${{transaction.price}}</th>
+            <th>
+              {% if transaction.shares > 0 %}
+                <span class="positive">Bought</span>
+              {% else %}
+                <span class="negative">Sold</span>
+              {% endif %}
+            </th>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

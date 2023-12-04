@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register new user
+{% endblock %}
+
+{% block main %}
+  <h2>Stock Quotes</h2>
+  <div class="form">
+    <form action="/quote" method="post">
+      <input type="text" name="symbol" placeholder="Ticker Symbol" autofocus autocomplete="off">
+      <button type="submit">Get Quote</button>
+    </form>
+  </div>
+
+  <table class="section">
+      <thead>
+          <tr>
+              <th>Symbol</th>
+              <th>Shares Owned</th>
+              <th>Today's Price</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>{{quote.symbol}}</th>
+          <th>{{shares}}</th>
+          <th>{{quote.price | usd}}</th>
+        </tr>
+      </tbody>
+
+  </table>
+{% endblock %}

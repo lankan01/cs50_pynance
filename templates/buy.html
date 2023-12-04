@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register new user
+{% endblock %}
+
+{% block main %}
+  <h2>Stock Quotes</h2>
+  <div class="form">
+    <form action="/buy" method="post">
+      <input type="text" name="symbol" placeholder="Ticker Symbol" autofocus autocomplete="off">
+      <input type="number" name="shares" placeholder="Number of Shares" autocomplete="off">
+      <button type="submit" class="buy">Buy Shares</button>
+    </form>
+  </div>
+
+{% endblock %}
